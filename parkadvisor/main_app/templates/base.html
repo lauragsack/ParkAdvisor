@@ -19,8 +19,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="/parks">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="/about">About</a>
+            <ul>
+            <li><a href="{% url 'about' %}">About</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'index' %}">View All My Cats</a></li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
     </nav>
