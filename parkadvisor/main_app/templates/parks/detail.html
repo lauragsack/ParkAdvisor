@@ -12,7 +12,7 @@
 				<p><strong>Status: </strong><strong style="color:green">{{park.open}}</strong></p>
 				<p><strong>Website: <a href="{{park.website}}">{{park.website}}</a></strong></p>
 				<p><strong>Phone: {{park.phone}}</strong></p>
-				<button type="button" class="btn btn-primary float-right"  style="width:100%" >Add a review</button>
+				<a href="{% url 'add_review' park.id %}"<button type="button" class="btn btn-primary float-right"  style="width:100%" >Add a review</button></a>
 			</div>
 
 			<div class="col-md-8 image-container">
@@ -23,16 +23,18 @@
 		<div class="row">
 			<div class="col-md-12 reviews-container">
 				<h1>Reviews</h1>
-				<div class="card bg-light mb-3" style="max-width: 100%">
-				  <div class="card-header">High traffic! Come early!</div>
-				  <div class="card-body">
-				    <h5 class="card-title"></h5>
-				    <p class="card-text">Was fun hiking! Would come earlier to get better parking spot though</p>
-				  	<button type="button" class="btn btn-info float-right" style="margin:.5rem">Update Review</button>
-				    <button type="button" class="btn btn-danger float-right" style="margin:.5rem">Delete Review</button>
-				  </div>
-				zdiv>
-			</div>
+				{% for review in reviews %}
+					<div class="card bg-light mb-3" style="max-width: 100%">
+					  <div class="card-header">Category: {{review.category}} || Park Rating: {{review.park_rating}} || Likes: {{review.likes}}</div>
+					  <div class="card-body">
+					    <h5 class="card-title">{{review.subject}}</h5>
+					    <p class="card-text">{{review.comments}}</p>
+					  	<a href="{% url 'reviews_update' park.id review.id%}"><button type="button" class="btn btn-info float-right" style="margin:.5rem">Update Review</button></a>
+					    <a href="{% url 'reviews_delete' park.id review.id%}"><button type="button" class="btn btn-danger float-right" style="margin:.5rem">Delete Review</button></a>
+					  </div>
+					</div>
+				{% endfor %}
+
 		</div>
 	</div>	
 
