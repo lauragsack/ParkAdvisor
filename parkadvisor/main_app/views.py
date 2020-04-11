@@ -16,6 +16,7 @@ def about(request):
     return render(request, 'about.html')
 
 def parks_index(request):
+    parks = Park.objects.all()
     return render(request, 'parks/index.html', { 'parks': parks })
 
 def parks_detail(request, park_id):
@@ -43,11 +44,10 @@ def add_review(request, park_id):
         new_review.save()
     return redirect('detail', pard_id=park_id)
 
-# todo: do we need @login_required or can we only display edit b utton if review.user=request.user?
+# @login_required
 def reviews_update(request, review_id):
     review = Review.objects.get(id=review_id)
     park_id = review.park.id
-    print(park_id)
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
@@ -57,11 +57,12 @@ def reviews_update(request, review_id):
         form = ReviewForm(instance=review)
     return render(request, 'reviews/review_form.html', { 'form': form })
 
-# todo do we need @login_required? or can we only display delete button if review.user=request.user?
-@login_required
+# @login_required
 def reviews_delete(request, review_id):
-    Review.objects.get(id=review_id).delete()
+    print("review_id", review_id)
     park_id = review.park.id
+    print("park_id", park_id)
+    Review.objects.get(id=review_id).delete()
     return redirect('detail', park_id)
 
 # todo: add to logged in navbar

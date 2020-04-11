@@ -29,8 +29,8 @@
 					  <div class="card-body">
 					    <h5 class="card-title">{{review.subject}}</h5>
 					    <p class="card-text">{{review.comments}}</p>
-					  	<a href="{% url 'reviews_update' park.id review.id%}"><button type="button" class="btn btn-info float-right" style="margin:.5rem">Update Review</button></a>
-					    <a href="{% url 'reviews_delete' park.id review.id%}"><button type="button" class="btn btn-danger float-right" style="margin:.5rem">Delete Review</button></a>
+					  	<a href="{% url 'reviews_update' review.id%}"><button type="button" class="btn btn-info float-right" style="margin:.5rem">Update Review</button></a>
+					    <a href="{% url 'reviews_delete' review.id%}"><button type="button" class="btn btn-danger float-right" style="margin:.5rem">Delete Review</button></a>
 					  </div>
 					</div>
 				{% endfor %}
