@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+		<div class="row description-image-container">
+			<div class="col-md-4 description-container">
+				<h2>Yosemite Valley</h2>
+				<h5>Rating Placeholder</h5>
+				<p><strong>Description: Many climbers consider Yosemite Valley among the world's very best climbing sites.</strong></p>
+				<p><strong>Address: 9035 Village Dr, Yosemite National Park, CA 95389-9912</strong></p>
+				<p><strong>Status: </strong><strong style="color:green">Open</strong></p>
+				<p><strong>Website: <a href="https://www.nps.gov/yose/index.htm">www.nps.gov/yose/index.htm</a></strong></p>
+				<p><strong>Phone: (510)-555-5555</strong></p>
+				<button type="button" class="btn btn-primary float-right"  style="width:100%" >Add a review</button>
+			</div>
+
+			<div class="col-md-8 image-container">
+				<img class="img-fluid" src="https://images.unsplash.com/photo-1498429089284-41f8cf3ffd39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 reviews-container">
+				<h1>Reviews</h1>
+				<div class="card bg-light mb-3" style="max-width: 100%">
+				  <div class="card-header">High traffic! Come early!</div>
+				  <div class="card-body">
+				    <h5 class="card-title"></h5>
+				    <p class="card-text">Was fun hiking! Would come earlier to get better parking spot though</p>
+				  	<button type="button" class="btn btn-info float-right" style="margin:.5rem">Update Review</button>
+				    <button type="button" class="btn btn-danger float-right" style="margin:.5rem">Delete Review</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+		
+
+{% endblock %}

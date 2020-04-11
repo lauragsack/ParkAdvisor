@@ -4,11 +4,30 @@ body {
     flex-direction: column;
   }
   
-  main {
-    flex: 1 0 auto;
-  }
-  
-  footer {
-    padding-top: 0;
-    text-align: right;
-  }
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  padding-top: 0;
+  text-align: right;
+}
+
+.description-container{
+  border: 2px solid #cbcbcb;
+}
+
+.reviews-container{
+  padding: 3rem;
+}
+
+.image-container{
+
+}
+
+.description-image-container{
+  padding-top: 3rem;
+}
+  /*.myboat{
+    border: 2px solid red;
+  }*/
