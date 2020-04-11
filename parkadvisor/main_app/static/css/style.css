@@ -6,7 +6,7 @@ body {
   }
   
 main{
-  /*flex: 1 0 auto;*/
+  flex: 1 0 auto;
 }
 
 .card-container{
@@ -14,11 +14,8 @@ main{
   align-items: center;
   padding: 1rem;
   flex-wrap: wrap;
-/*  justify-content: space-between;
-*/  border: 2px solid pink;
   overflow:hidden;
-
-   text-overflow:ellipsis;
+  text-overflow:ellipsis;
 
 }
 .detail-container{
@@ -56,6 +53,4 @@ footer {
 .description-image-container{
   padding-top: 3rem;
 }
-  /*.myboat{
-    border: 2px solid red;
-  }*/
+  
