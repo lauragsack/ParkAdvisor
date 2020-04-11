@@ -7,10 +7,11 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('parks/<int:park_id>/', views.parks_detail, name='detail'),
     path('parks/<int:park_id>/add_review', views.add_review, name='add_review'),
-    path('parks/<int:park_id>/edit_review/<int:review_id>/', views.reviews_update, name='reviews_update'),
-    path('parks/<int:park_id>/delete_review/<int:review_id>/', views.reviews_delete, name='reviews_delete'),
+    path('reviews/<int:review_id>', views.reviews_update, name='reviews_update'),
+    path('reviews/<int:review_id>', views.reviews_delete, name='reviews_delete'),
      # should review cards on reviews index html have edit and delete buttons?
     path('reviews/', views.reviews_index, name='reviews_index'),
+    # path('reviews/', views.reviews_index, name='reviews_detail'),
 
     # todo not sure if we need assoc_review path for one-to-many (added for many-to-many in cats)
     # path('parks/<int:park_id>/assoc_review/<int:review_id>/', views.assoc_review, name='assoc_review'),
