@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+	<div class="col-md-12 detail-container">
+		<div class="row description-image-container">
+			<div class="col-md-4 description-container">
+				<h2>{{park.name}}</h2>
+				<h5>{{park.avg_rating}}</h5>
+				<p><strong>Description: {{park.description}}</strong></p>
+				<p><strong>Address: {{park.location}}</strong></p>
+				<p><strong>Status: </strong><strong style="color:green">{{park.open}}</strong></p>
+				<p><strong>Website: <a href="{{park.website}}">{{park.website}}</a></strong></p>
+				<p><strong>Phone: {{park.phone}}</strong></p>
+				<a href="{% url 'add_review' park.id %}"<button type="button" class="btn btn-primary float-right"  style="width:100%" >Add a review</button></a>
+			</div>
+
+			<div class="col-md-8 image-container">
+				<img class="img-fluid" src="{{park.image}}">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 reviews-container">
+				<h1>Reviews</h1>
+				{% for review in reviews %}
+					<div class="card bg-light mb-3" style="max-width: 100%">
+					  <div class="card-header">Category: {{review.category}} || Park Rating: {{review.park_rating}} || Likes: {{review.likes}}</div>
+					  <div class="card-body">
+					    <h5 class="card-title">{{review.subject}}</h5>
+					    <p class="card-text">{{review.comments}}</p>
+					  	<a href="{% url 'reviews_update' park.id review.id%}"><button type="button" class="btn btn-info float-right" style="margin:.5rem">Update Review</button></a>
+					    <a href="{% url 'reviews_delete' park.id review.id%}"><button type="button" class="btn btn-danger float-right" style="margin:.5rem">Delete Review</button></a>
+					  </div>
+					</div>
+				{% endfor %}
+
+		</div>
+	</div>	
+
+{% endblock %}
