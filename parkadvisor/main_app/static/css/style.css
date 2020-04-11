@@ -2,13 +2,54 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #f2f2f2;
   }
   
-  main {
-    flex: 1 0 auto;
-  }
+main{
+  flex: 1 0 auto;
+}
+
+.card-container{
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+
+}
+.detail-container{
+  flex: 1 0 auto;
+}
+.parkCard{
+  display: flex;
+  flex-direction: column;
+  word-wrap:break-word;
+  height: 20rem;
+  width: 15rem;
+  margin: 1rem;
+  margin-right: 10px;
+}
+footer {
+  padding-top: 0;
+  text-align: right;
+}
+
+.description-container{
+  border: 2px solid #cbcbcb;
+  background-color: #ffffff ;
+  padding: .5rem;
+}
+
+.reviews-container{
+  padding: 3rem;
+}
+
+.image-container{
+
+}
+
+.description-image-container{
+  padding-top: 3rem;
+}
   
-  footer {
-    padding-top: 0;
-    text-align: right;
-  }
