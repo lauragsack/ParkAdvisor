@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from .models import Park, Review, User
-# todo: delete below line if go with CBVs
 from .forms import ReviewForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -27,6 +26,7 @@ def parks_detail(request, park_id):
         'reviews': this_parks_reviews
     })
 
+@login_required
 def add_review(request, park_id):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
