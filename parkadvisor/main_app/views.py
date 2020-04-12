@@ -28,6 +28,9 @@ def parks_detail(request, park_id):
 
 @login_required
 def add_review(request, park_id):
+
+    
+
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -40,6 +43,7 @@ def add_review(request, park_id):
         form = ReviewForm()
     context = { 'form': form }
     return render(request, 'reviews/review_form.html', { 'form': form })
+
 
 @login_required
 def reviews_update(request, review_id):
