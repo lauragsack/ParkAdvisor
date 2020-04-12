@@ -7,11 +7,15 @@
 			<div class="col-md-4 description-container">
 				<h2>{{park.name}}</h2>
 				<h5>{{park.avg_rating}}</h5>
-				<p><strong>Description: {{park.description}}</strong></p>
-				<p><strong>Address: {{park.location}}</strong></p>
-				<p><strong>Status: </strong><strong style="color:green">{{park.open}}</strong></p>
-				<p><strong>Website: <a href="{{park.website}}">{{park.website}}</a></strong></p>
-				<p><strong>Phone: {{park.phone}}</strong></p>
+				<p><strong>{{park.description}}</strong></p>
+				<p><strong>{{park.location}}</strong></p>
+				{% if park.open == True %}
+					<p><strong style="color:green">Open</strong></p>
+				{% else %}
+					<p><strong style="color:red">Closed</strong></p>
+				{% endif %}
+				<p><strong><a href="{{park.website}}">{{park.website}}</a></strong></p>
+				<p><strong>{{park.phone}}</strong></p>
 				<a href="{% url 'add_review' park.id %}"<button type="button" class="btn btn-primary float-right"  style="width:100%" >Add a review</button></a>
 			</div>
 
@@ -25,16 +29,19 @@
 				<h1>Reviews</h1>
 				{% for review in reviews %}
 					<div class="card bg-light mb-3" style="max-width: 100%">
-					  <div class="card-header">Category: {{review.category}} || Park Rating: {{review.park_rating}} || Likes: {{review.likes}}</div>
+					  <div class="card-header">Category: {{review.get_category_display}} || Park Rating: {{review.park_rating}} || Likes: {{review.likes}}</div>
 					  <div class="card-body">
 					    <h5 class="card-title">{{review.subject}}</h5>
 					    <p class="card-text">{{review.comments}}</p>
+						{% if request.user == review.user %}
 					  	<a href="{% url 'reviews_update' review.id%}"><button type="button" class="btn btn-info float-right" style="margin:.5rem">Update Review</button></a>
 					    <a href="{% url 'reviews_delete' review.id%}"><button type="button" class="btn btn-danger float-right" style="margin:.5rem">Delete Review</button></a>
-					  </div>
+						{% endif %}
+						</div>
+						<div class="card-footer card-text-right text-muted">Posted by {{ review.user }} on {{ review.created_date }}</div>
 					</div>
 				{% endfor %}
-
+			</div>
 		</div>
 	</div>	
 
