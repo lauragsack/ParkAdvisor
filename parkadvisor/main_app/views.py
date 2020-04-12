@@ -28,14 +28,8 @@ def parks_detail(request, park_id):
     })
 
 def add_review(request, park_id):
-<<<<<<< HEAD
-    form = ReviewForm(request.POST)
-    if form.is_valid():
-      new_review = form.save(commit=False)
-      new_review.park_id = park_id
-      review.user = request.user
-      new_review.save()
-    return redirect('detail', park_id=park_id)
+
+    
 
     if request.method == 'POST':
         form = ReviewForm(request.POST)
