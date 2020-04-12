@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-CATEGORIES = (('L', 'Loding'), ('A', 'Activities'), ('F', 'Food'))
+CATEGORIES = (('L', 'Lodging'), ('A', 'Activities'), ('F', 'Food'))
 
 class Park(models.Model):
 	name = models.CharField(max_length=100)
