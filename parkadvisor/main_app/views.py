@@ -95,12 +95,15 @@ def signup(request):
 
 
 def external_api(request):
-    url = 'https://developer.nps.gov/api/v1/parks?&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
+    url = 'https://developer.nps.gov/api/v1/parks?limit=1&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
     # headers = {'api_key': '65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'}
     response = requests.get(url)
     data = response.json()
-    print(data)
+    print(data["data"][0]["states"])
 
+    new_park = Park.objects.create(name="Ajay", location="Home", entrance_fee=3, description="blah", phone="243433444", website="www.google.com", open=True, image="www.yahoo.com", avg_rating=3.6)
+
+    # print(data[0]["states"])
     # data = response.json()
     # print(data)
     # parks_data = response.json()
