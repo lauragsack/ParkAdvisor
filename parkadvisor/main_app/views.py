@@ -38,11 +38,11 @@ def parks_detail(request, park_id):
 def add_review(request, park_id):
     form = ReviewForm(request.POST)
     if form.is_valid():
-        new_review = form.save(commit=False)
-        new_review.park_id = park_id
-        review.user = request.user
-        new_review.save()
-    return redirect('detail', pard_id=park_id)
+      new_review = form.save(commit=False)
+      new_review.park_id = park_id
+      review.user = request.user
+      new_review.save()
+    return redirect('detail', park_id=park_id)
 
 # @login_required
 def reviews_update(request, review_id):
