@@ -6,8 +6,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-def home(request):
-    return redirect(request, 'parks/')
+def landing(request):
+    
+    return render(request, 'landing.html')
 
 def about(request):
     return render(request, 'about.html')
