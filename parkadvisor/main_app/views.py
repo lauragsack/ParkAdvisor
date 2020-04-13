@@ -107,17 +107,18 @@ def external_api(request):
     # print(not(Park.objects.filter(name=park["fullName"]).exists()))
     # print("----------------------------------------")
 
-    try:
-        for park in data["data"]:
-        #Filter out desigination and only create models for 'National Park'
+
+    for park in data["data"]:
+    #Filter out desigination and only create models for 'National Park'
+        try:
             phoneNum = park["contacts"]["phoneNumbers"][0]["phoneNumber"]
             formatedPhoneNum = ("("+phoneNum[:3]+")-"+phoneNum[3:6]+"-"+phoneNum[6:])
 
             formated_address = park["addresses"][0]["line1"] + ", " + park["addresses"][0]["city"] + ", " + park["addresses"][0]["stateCode"] +" " + park["addresses"][0]["postalCode"]
             if( (not(Park.objects.filter(name=park["fullName"]).exists())) and (park["designation"] == "National Park") ):
                 new_park = Park.objects.create(name=park["fullName"], location=formated_address,entrance_fee=int(float(park["entranceFees"][0]["cost"])), description=park["description"], phone=formatedPhoneNum, website=park["url"], open=True, image=park["images"][0]["url"], avg_rating=3.6)
-    except KeyError:
-        pass
+        except:
+            continue
     #Sort of working
     
 
