@@ -7,8 +7,6 @@ from django.contrib.auth.decorators import login_required
 
 #API RELATED
 import requests
-from rest_framework import status 
-from rest_framework.response import Response 
 from django.http import HttpResponse
 
 
@@ -28,10 +26,18 @@ def parks_detail(request, park_id):
     park = Park.objects.get(id=park_id)
     review_form = ReviewForm()
     this_parks_reviews = park.review_set.all()
+    if len(this_parks_reviews) == 0:
+        park.avg_rating = 0
+    else:
+        sum_reviews = 0
+        for review in this_parks_reviews:
+            sum_reviews += review.park_rating
+            park.avg_rating = sum_reviews / len(this_parks_reviews)
     return render (request, 'parks/detail.html', {
         'park': park,
         'review_form': review_form,
-        'reviews': this_parks_reviews
+        'reviews': this_parks_reviews,
+        'park.avg_rating': park.avg_rating
     })
 
 @login_required
@@ -111,7 +117,7 @@ def external_api(request):
         #Filter out desigination and only create models for 'National Park'
 
         if( (not(Park.objects.filter(name=park["fullName"]).exists())) and (park["designation"] == "National Park") ):
-            new_park = Park.objects.create(name=park["fullName"], location=park["addresses"][0],entrance_fee=int(float(park["entranceFees"][0]["cost"])), description=park["description"], phone=park["contacts"]["phoneNumbers"][0]["phoneNumber"], website=park["url"], open=True, image=park["images"][0]["url"], avg_rating=3.6)
+            new_park = Park.objects.create(name=park["fullName"], location=park["addresses"][0],entrance_fee=int(float(park["entranceFees"][0]["cost"])), description=park["description"], phone=park["contacts"]["phoneNumbers"][0]["phoneNumber"], website=park["url"], open=True, image=park["images"][0]["url"], avg_rating=0)
 
 
     # new_park = Park.objects.create(name=data["data"][0]["fullName"], location=data["data"][0]["addresses"][0],

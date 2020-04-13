@@ -6,7 +6,11 @@
 		<div class="row description-image-container">
 			<div class="col-md-4 description-container">
 				<h2>{{park.name}}</h2>
-				<h5>{{park.avg_rating}}</h5>
+				{% if park.avg_rating == 0 %}
+				<h5>Not Yet Rated</h5>
+				{% else %}
+				<h5>{{park.avg_rating|floatformat:2}}</h5>
+				{% endif %}
 				<p><strong>{{park.description}}</strong></p>
 				<p><strong>{{park.location}}</strong></p>
 				{% if park.open == True %}
@@ -44,5 +48,9 @@
 			</div>
 		</div>
 	</div>	
+
+<script>
+
+</script>
 
 {% endblock %}
