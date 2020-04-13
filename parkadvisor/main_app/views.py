@@ -5,6 +5,14 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
+#API RELATED
+import requests
+from rest_framework import status 
+from rest_framework.response import Response 
+from django.http import HttpResponse
+
+
+
 # Create your views here.
 def home(request):
     return redirect(request, 'parks/')
@@ -85,5 +93,36 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+
+def external_api(request):
+
+    #Working
+    url = 'https://developer.nps.gov/api/v1/parks?limit=50&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
+    response = requests.get(url)
+    data = response.json()
+
+    # print(data["data"][0]["states"])
+    # print("---------------------------------------")
+    # print(not(Park.objects.filter(name=park["fullName"]).exists()))
+    # print("----------------------------------------")
+
+    #Sort of working
+    for park in data["data"]:
+        #Filter out desigination and only create models for 'National Park'
+
+        if( (not(Park.objects.filter(name=park["fullName"]).exists())) and (park["designation"] == "National Park") ):
+            new_park = Park.objects.create(name=park["fullName"], location=park["addresses"][0],entrance_fee=int(float(park["entranceFees"][0]["cost"])), description=park["description"], phone=park["contacts"]["phoneNumbers"][0]["phoneNumber"], website=park["url"], open=True, image=park["images"][0]["url"], avg_rating=3.6)
+
+
+    # new_park = Park.objects.create(name=data["data"][0]["fullName"], location=data["data"][0]["addresses"][0],
+    #  entrance_fee=int(float(data["data"][0]["entranceFees"][0]["cost"])), description=data["data"][0]["description"], 
+    #  phone=data["data"][0]["contacts"]["phoneNumbers"][0]["phoneNumber"], website="www.google.com", open=True, image="www.yahoo.com", avg_rating=3.6)
+
+    # print(data[0]["states"])
+    # data = response.json()
+    # print(data)
+    # parks_data = response.json()
+    # print(parks_data)
+    return render(request, 'parks/test.html', {'data': data})
 
 
