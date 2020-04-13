@@ -80,3 +80,39 @@ footer {
   margin: 0 auto;
 }
 
+.signup-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.signup-submit{
+  display: block;
+  margin: 0 auto;
+}
+
+
+.login-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  border: 1px solid #cbcbcb;
+
+}
+
+.login-submit{
+/*  display: block;
+  margin: 0 auto;*/
+}
+
+
+/*.helptext{
+  visibility: hidden;
+}
+
+ul{
+  visibility: hidden;
+}
+*/
