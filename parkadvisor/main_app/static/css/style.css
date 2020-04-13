@@ -98,13 +98,11 @@ footer {
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-  border: 1px solid #cbcbcb;
-
 }
 
 .login-submit{
-/*  display: block;
-  margin: 0 auto;*/
+  display: block;
+  margin: 0 auto;
 }
 
 
