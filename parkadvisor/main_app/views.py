@@ -98,7 +98,7 @@ def signup(request):
 def external_api(request):
 
     #Working
-    url = 'https://developer.nps.gov/api/v1/parks?limit=50&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
+    url = 'https://developer.nps.gov/api/v1/parks?limit=250&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
     response = requests.get(url)
     data = response.json()
 
@@ -107,15 +107,19 @@ def external_api(request):
     # print(not(Park.objects.filter(name=park["fullName"]).exists()))
     # print("----------------------------------------")
 
-    #Sort of working
-    for park in data["data"]:
+    try:
+        for park in data["data"]:
         #Filter out desigination and only create models for 'National Park'
-        phoneNum = park["contacts"]["phoneNumbers"][0]["phoneNumber"]
-        formatedPhoneNum = ("("+phoneNum[:3]+")-"+phoneNum[3:6]+"-"+phoneNum[6:])
+            phoneNum = park["contacts"]["phoneNumbers"][0]["phoneNumber"]
+            formatedPhoneNum = ("("+phoneNum[:3]+")-"+phoneNum[3:6]+"-"+phoneNum[6:])
 
-        formated_address = park["addresses"][0]["line1"] + ", " + park["addresses"][0]["city"] + ", " + park["addresses"][0]["stateCode"] +" " + park["addresses"][0]["postalCode"]
-        if( (not(Park.objects.filter(name=park["fullName"]).exists())) and (park["designation"] == "National Park") ):
-            new_park = Park.objects.create(name=park["fullName"], location=formated_address,entrance_fee=int(float(park["entranceFees"][0]["cost"])), description=park["description"], phone=formatedPhoneNum, website=park["url"], open=True, image=park["images"][0]["url"], avg_rating=3.6)
+            formated_address = park["addresses"][0]["line1"] + ", " + park["addresses"][0]["city"] + ", " + park["addresses"][0]["stateCode"] +" " + park["addresses"][0]["postalCode"]
+            if( (not(Park.objects.filter(name=park["fullName"]).exists())) and (park["designation"] == "National Park") ):
+                new_park = Park.objects.create(name=park["fullName"], location=formated_address,entrance_fee=int(float(park["entranceFees"][0]["cost"])), description=park["description"], phone=formatedPhoneNum, website=park["url"], open=True, image=park["images"][0]["url"], avg_rating=3.6)
+    except KeyError:
+        pass
+    #Sort of working
+    
 
 
     # new_park = Park.objects.create(name=data["data"][0]["fullName"], location=data["data"][0]["addresses"][0],

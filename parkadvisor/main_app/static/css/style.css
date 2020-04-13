@@ -67,4 +67,17 @@ footer {
   padding-top: 3rem;
   height: auto;
 }
-  
+
+.review-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5rem;
+}
+
+.review-submit{
+  border: 2px solid #cbcbcb;
+  display: block;
+  margin: 0 auto;
+}
+
