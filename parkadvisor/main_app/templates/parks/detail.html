@@ -6,6 +6,13 @@
 		<div class="row description-image-container">
 			<div class="col-md-4 description-container">
 				<h2>{{park.name}}</h2>
+				{% if park.avg_rating == 0 %}
+				<h5>Not Yet Rated</h5>
+				{% else %}
+				<h5>{{park.avg_rating|floatformat:2}}</h5>
+				{% endif %}
+				<p><strong>{{park.description}}</strong></p>
+				<p><strong>{{park.location}}</strong></p>
 				<h5>{{park.avg_rating}}</h5>
 				<p><strong>Description: {{park.description}}</strong></p>
 				<p><strong>Address: {{park.location}}</strong></p>
@@ -38,11 +45,33 @@
 					    <a href="{% url 'reviews_delete' review.id%}"><button type="button" class="btn btn-danger float-right" style="margin:.5rem">Delete Review</button></a>
 						{% endif %}
 						</div>
-						<div class="card-footer card-text-right text-muted">Posted by {{ review.user }} on {{ review.created_date }}</div>
+						<div class="card-footer card-text-right text-muted">Posted by {{ review.user }} on {{ review.created_date }}
+						<button type="button" class="like btn btn-danger float-right" data-review-id="{{review.id}}" style="margin:.5rem">Like</button>
+						</div>
 					</div>
 				{% endfor %}
 			</div>
 		</div>
 	</div>	
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".like").on("click", function(event) {
+			let review_id = event.target.getAttribute("data-review-id")
+			$.ajax({
+			method: "GET",
+			url: `http://localhost:8000/reviews/like/${review_id}`,
+			success: (success) => {
+				console.log('success')
+			},
+			error: (err) => {
+			console.log(err);
+			}
+			})
+		})
+	});
+</script>
 
 {% endblock %}
