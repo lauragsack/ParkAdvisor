@@ -36,8 +36,8 @@ footer {
 }
 
 .description-container{
-  border: 2px solid #cbcbcb;
-  background-color: #ffffff ;
+/*  border: 1px solid #cbcbcb;
+*/  background-color: #ffffff ;
   padding: .5rem;
 }
 
@@ -46,10 +46,25 @@ footer {
 }
 
 .image-container{
+/*  border: 2px solid #cbcbcb;
+*//*  display: flex;
+  justify-content: center;
+/*  margin:auto;*/
+/*  display: block;
+ margin: auto;*/
 
+  background-color: #ffffff ;
+    display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
+.detail-image{
+  height: auto;
+
+}
 .description-image-container{
   padding-top: 3rem;
+  height: auto;
 }
   
