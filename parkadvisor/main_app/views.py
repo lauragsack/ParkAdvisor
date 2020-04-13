@@ -7,8 +7,6 @@ from django.contrib.auth.decorators import login_required
 
 #API RELATED
 import requests
-from rest_framework import status 
-from rest_framework.response import Response 
 from django.http import HttpResponse
 
 
@@ -29,10 +27,18 @@ def parks_detail(request, park_id):
     park = Park.objects.get(id=park_id)
     review_form = ReviewForm()
     this_parks_reviews = park.review_set.all()
+    if len(this_parks_reviews) == 0:
+        park.avg_rating = 0
+    else:
+        sum_reviews = 0
+        for review in this_parks_reviews:
+            sum_reviews += review.park_rating
+            park.avg_rating = sum_reviews / len(this_parks_reviews)
     return render (request, 'parks/detail.html', {
         'park': park,
         'review_form': review_form,
-        'reviews': this_parks_reviews
+        'reviews': this_parks_reviews,
+        'park.avg_rating': park.avg_rating
     })
 
 @login_required
@@ -66,6 +72,19 @@ def reviews_update(request, review_id):
     else: 
         form = ReviewForm(instance=review)
     return render(request, 'reviews/review_form.html', { 'form': form })
+
+@login_required
+def reviews_like(request, review_id):
+    review = Review.objects.get(id=review_id)
+    # likes = review.likes
+    park_id = review.park.id
+    if request.method == 'GET':
+        review.likes += 1
+        print('***************')
+        print(review.likes)
+        print('***************')
+        review.save()
+    return redirect('detail', park_id)
 
 @login_required
 def reviews_delete(request, review_id):
