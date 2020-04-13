@@ -36,8 +36,8 @@ footer {
 }
 
 .description-container{
-  border: 2px solid #cbcbcb;
-  background-color: #ffffff ;
+/*  border: 1px solid #cbcbcb;
+*/  background-color: #ffffff ;
   padding: .5rem;
 }
 
@@ -46,12 +46,63 @@ footer {
 }
 
 .image-container{
-  
+
+
+  background-color: #ffffff ;
+    display:flex;
+  align-items:center;
+  justify-content:center;
+
 }
 
+.detail-image{
+  height: auto;
+
+}
 .description-image-container{
   padding-top: 3rem;
+  height: auto;
 }
+
+.review-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.review-submit{
+  display: block;
+  margin: 0 auto;
+}
+
+.signup-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.signup-submit{
+  display: block;
+  margin: 0 auto;
+}
+
+
+.login-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.login-submit{
+  display: block;
+  margin: 0 auto;
+}
+
+
+
 
 .colorjumbo {
     background-color: #c8e8e2;
