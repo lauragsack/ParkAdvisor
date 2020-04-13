@@ -73,6 +73,19 @@ def reviews_update(request, review_id):
     return render(request, 'reviews/review_form.html', { 'form': form })
 
 @login_required
+def reviews_like(request, review_id):
+    review = Review.objects.get(id=review_id)
+    # likes = review.likes
+    park_id = review.park.id
+    if request.method == 'GET':
+        review.likes += 1
+        print('***************')
+        print(review.likes)
+        print('***************')
+        review.save()
+    return redirect('detail', park_id)
+
+@login_required
 def reviews_delete(request, review_id):
     review = Review.objects.get(id=review_id)
     park_id = review.park.id
