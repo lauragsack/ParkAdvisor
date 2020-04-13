@@ -7,20 +7,20 @@
 			<div class="col-md-4 description-container">
 				<h2>{{park.name}}</h2>
 				<h5>{{park.avg_rating}}</h5>
-				<p><strong>{{park.description}}</strong></p>
-				<p><strong>{{park.location}}</strong></p>
+				<p><strong>Description: {{park.description}}</strong></p>
+				<p><strong>Address: {{park.location}}</strong></p>
 				{% if park.open == True %}
 					<p><strong style="color:green">Open</strong></p>
 				{% else %}
 					<p><strong style="color:red">Closed</strong></p>
 				{% endif %}
 				<p><strong><a href="{{park.website}}">{{park.website}}</a></strong></p>
-				<p><strong>{{park.phone}}</strong></p>
+				<p><strong>Phone number: {{park.phone}}</strong></p>
 				<a href="{% url 'add_review' park.id %}"<button type="button" class="btn btn-primary float-right"  style="width:100%" >Add a review</button></a>
 			</div>
 
 			<div class="col-md-8 image-container">
-				<img class="img-fluid" src="{{park.image}}">
+				<img class="img-fluid detail-image" src="{{park.image}}">
 			</div>
 		</div>
 
