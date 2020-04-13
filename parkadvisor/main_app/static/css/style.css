@@ -2,7 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #f2f2f2;
+    background-color: #5ba379;
   }
   
 main{
@@ -46,10 +46,23 @@ footer {
 }
 
 .image-container{
-
+  
 }
 
 .description-image-container{
   padding-top: 3rem;
 }
-  
+
+.colorjumbo {
+    background-color: #c8e8e2;
+    text-color: beige;
+  }
+
+.carwidth {
+  width:100%;
+}  
+
+.carousel-item .img-fluid {
+width:100%;
+
+}
