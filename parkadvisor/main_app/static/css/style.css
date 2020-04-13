@@ -2,7 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #f2f2f2;
+    background-color: #5ba379;
   }
   
 main{
@@ -46,17 +46,13 @@ footer {
 }
 
 .image-container{
-/*  border: 2px solid #cbcbcb;
-*//*  display: flex;
-  justify-content: center;
-/*  margin:auto;*/
-/*  display: block;
- margin: auto;*/
+
 
   background-color: #ffffff ;
     display:flex;
   align-items:center;
   justify-content:center;
+
 }
 
 .detail-image{
@@ -106,11 +102,18 @@ footer {
 }
 
 
-/*.helptext{
-  visibility: hidden;
-}
 
-ul{
-  visibility: hidden;
+
+.colorjumbo {
+    background-color: #c8e8e2;
+    text-color: beige;
+  }
+
+.carwidth {
+  width:100%;
+}  
+
+.carousel-item .img-fluid {
+width:100%;
+
 }
-*/
