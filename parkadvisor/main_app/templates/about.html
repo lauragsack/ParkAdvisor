@@ -1,8 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>About Parkadvisor</h1>
-<hr />
-<p>Hire Parkadvisor!</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">About Parkadvisor</h1>
+    <p class="lead">We started Parkadvisor during COVID-19 so we could dream about the great outdoors! Dream with us and plan your post pandemic trip with our trusted user reviews and ratings. Help build a community of National Park explorers by sharing your own experiences right here on Parkadvisor.</p>
+  </div>
+</div>
+<h2>Our Team</h2>
+<ul class="list-unstyled">
+  <li class="media">
+    <img src="https://media-exp1.licdn.com/dms/image/C5603AQEw4I6TrmUyYg/profile-displayphoto-shrink_200_200/0?e=1592438400&v=beta&t=d-K8P0sjC6N35xIoP29G_gCI0RUFFNqEqVuM-0IiLeU" class="mr-3" alt="Ajay's profile photo">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Ajay Kumar</h5>
+      Ajay is a full stack developer car aficionado who lives in the Bay Area. He has a lifelong interest in computers and loves building apps that solve real world problems.
+      <p><br>Ajay's favorite National Park is&nbsp;<a href="http://localhost:8000/parks/1/">Yosemite National Park.</a></p>
+    </div>
+  </li>
+  <li class="media my-4">
+    <img src="https://media-exp1.licdn.com/dms/image/C5603AQH2RJiaH-qfOg/profile-displayphoto-shrink_200_200/0?e=1592438400&v=beta&t=N5VYQKVOVG-8kycHkP1eG0VNsCy-P73JkBtFZapXHKo" class="mr-3" alt="Seema's profile photo">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Seema Mahajan</h5>
+      Seema is a full stack developer and radio host who lives in the Bay Area. She loves music and building applications that help people tell their stories.
+      <p><br>Seema's favorite National Park is&nbsp;<a href="http://localhost:8000/parks/1/">Bryce Canyon National Park.</a></p>
+    </div>
+  </li>
+  <li class="media">
+    <img src="https://media-exp1.licdn.com/dms/image/C5603AQH8ehiEu94eJg/profile-displayphoto-shrink_200_200/0?e=1592438400&v=beta&t=MzWKW-IuRBrFFYDNJYcHzcMq3qyfsbjZuCLI-jgpnF4" class="mr-3" alt="Laura's profile photo">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Laura Sack</h5>
+      Laura is a full stack developer and product manager who lives in San Francisco. She loves data models and logic, and lives for dogs and donuts.
+      <p><br>Laura's favorite National Park is&nbsp;<a href="http://localhost:8000/parks/1/">Zion National Park.</a></p>
+    </div>
+  </li>
+</ul>
 
 {% endblock %}

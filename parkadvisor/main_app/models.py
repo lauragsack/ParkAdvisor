@@ -1,6 +1,7 @@
 from django.db import models
 
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 CATEGORIES = (('L', 'Lodging'), ('A', 'Activities'), ('F', 'Food'))
@@ -29,8 +30,8 @@ class Review(models.Model):
 		)
 	comments = models.TextField(max_length=250)
 	image = models.CharField(max_length=250)
-	park_rating = models.IntegerField()
-	likes = models.IntegerField()
+	park_rating = models.IntegerField(validators=(MinValueValidator(1), MaxValueValidator(5)))
+	likes = models.IntegerField(default=0)
 
 	#TODO ADD User foreign key a
 	park = models.ForeignKey(Park, on_delete=models.CASCADE)
