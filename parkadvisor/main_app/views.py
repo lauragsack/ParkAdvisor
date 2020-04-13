@@ -4,10 +4,12 @@ from .forms import ReviewForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
 #API RELATED
 import requests
 from django.http import HttpResponse
+
 
 
 
@@ -114,11 +116,11 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def external_api(request):
 
     #Working
-    url = 'https://developer.nps.gov/api/v1/parks?limit=250&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
+    url = 'https://developer.nps.gov/api/v1/parks?limit=100&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
     response = requests.get(url)
     data = response.json()
 
