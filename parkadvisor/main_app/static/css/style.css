@@ -24,12 +24,19 @@ main{
 .parkCard{
   display: flex;
   flex-direction: column;
+  align-items:center;
+  justify-content:center;
   word-wrap:break-word;
   height: 20rem;
   width: 15rem;
   margin: 1rem;
   margin-right: 10px;
 }
+
+.card-img-top{
+  /*height: 15rem;*/
+}
+
 footer {
   padding-top: 0;
   text-align: right;
