@@ -11,9 +11,6 @@ import requests
 from django.http import HttpResponse
 
 
-
-
-
 # Create your views here.
 def landing(request):
     
@@ -46,9 +43,6 @@ def parks_detail(request, park_id):
 
 @login_required
 def add_review(request, park_id):
-
-    
-
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -79,13 +73,9 @@ def reviews_update(request, review_id):
 @login_required
 def reviews_like(request, review_id):
     review = Review.objects.get(id=review_id)
-    # likes = review.likes
     park_id = review.park.id
     if request.method == 'GET':
         review.likes += 1
-        print('***************')
-        print(review.likes)
-        print('***************')
         review.save()
     return redirect('detail', park_id)
 
@@ -118,20 +108,10 @@ def signup(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def external_api(request):
-
-    #Working
     url = 'https://developer.nps.gov/api/v1/parks?limit=100&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
     response = requests.get(url)
     data = response.json()
-
-    # print(data["data"][0]["states"])
-    # print("---------------------------------------")
-    # print(not(Park.objects.filter(name=park["fullName"]).exists()))
-    # print("----------------------------------------")
-
-
     for park in data["data"]:
-    #Filter out desigination and only create models for 'National Park'
         try:
             phoneNum = park["contacts"]["phoneNumbers"][0]["phoneNumber"]
             formatedPhoneNum = ("("+phoneNum[:3]+")-"+phoneNum[3:6]+"-"+phoneNum[6:])
@@ -141,19 +121,6 @@ def external_api(request):
                 new_park = Park.objects.create(name=park["fullName"], location=formated_address,entrance_fee=int(float(park["entranceFees"][0]["cost"])), description=park["description"], phone=formatedPhoneNum, website=park["url"], image=park["images"][0]["url"], avg_rating=3.6)
         except:
             continue
-    #Sort of working
-    
-
-
-    # new_park = Park.objects.create(name=data["data"][0]["fullName"], location=data["data"][0]["addresses"][0],
-    #  entrance_fee=int(float(data["data"][0]["entranceFees"][0]["cost"])), description=data["data"][0]["description"], 
-    #  phone=data["data"][0]["contacts"]["phoneNumbers"][0]["phoneNumber"], website="www.google.com", open=True, image="www.yahoo.com", avg_rating=3.6)
-
-    # print(data[0]["states"])
-    # data = response.json()
-    # print(data)
-    # parks_data = response.json()
-    # print(parks_data)
     return render(request, 'parks/test.html', {'data': data})
 
 

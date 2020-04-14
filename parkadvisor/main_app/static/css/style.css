@@ -3,7 +3,6 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     min-height: 100vh;
     flex-direction: column;
-    /* background-image: url('https://images.unsplash.com/photo-1503435980610-a51f3ddfee50?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'); */
     background-image: url('https://images.unsplash.com/photo-1494358722603-becf33a822a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60');
     background-size: cover;
   }
@@ -56,19 +55,16 @@ footer {
 }
 
 .image-container{
-
-
   background-color: #ffffff ;
     display:flex;
   align-items:center;
   justify-content:center;
-
 }
 
 .detail-image{
   height: auto;
-
 }
+
 .description-image-container{
   padding-top: 3rem;
   height: auto;

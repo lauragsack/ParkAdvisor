@@ -47,7 +47,7 @@
 				<h1>Reviews</h1>
 				{% for review in reviews %}
 					<div class="card bg-light mb-3" style="max-width: 100%">
-					  <div class="card-header">Category: {{review.get_category_display}} || Park Rating: {{review.park_rating}} || <span id="likes-{review.id}">Likes: {{review.likes}}</div>
+					  <div class="card-header">Category: {{review.get_category_display}} || Park Rating: {{review.park_rating}} || <i class="far fa-heart"></i> {{review.likes}}</div>
 					  <div class="card-body">
 					    <strong><p class="card-title">{{review.subject}}</p></strong>
 					    <p class="card-text">{{review.comments}}</p>
@@ -60,7 +60,6 @@
 							<button type="button" class="btn btn-danger float-right">
 								<span class="like glyphicon glyphicon-heart" aria-hidden="true" data-review-id="{{review.id}}"></span>
 							</button>
-						{% comment %} <button type="button" class="like btn btn-danger float-right" data-review-id="{{review.id}}" style="margin:.5rem">Like</button> {% endcomment %}
 						</div>
 					</div>
 				{% endfor %}
