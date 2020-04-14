@@ -3,7 +3,7 @@
 ## :evergreen_tree: ParKAdvisor :evergreen_tree:
 ![Yosemite](https://images.unsplash.com/photo-1517432995952-bbdb81650e9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)
 
-### About This Web App
+### About This App
 https://github.com/lauragsack/ParkAdvisor
 ParkAdviser is an app made for users to explore US National Parks. Users can add reviews to share and rate their park experiences. 
 
