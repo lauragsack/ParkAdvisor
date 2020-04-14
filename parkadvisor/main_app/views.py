@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import user_passes_test
 
 #API RELATED
 import requests, json
-from django.http import HttpResponse
 
 
 # Create your views here.
@@ -108,29 +107,9 @@ def signup(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def external_api(request):
-<<<<<<< HEAD
-
-    #Working
-    url = 'https://developer.nps.gov/api/v1/parks?limit=90&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
-    response = requests.get(url)
-    data = response.json()
-
-
-    # encoded_response = json.dumps(response)
-    # data = json.loads(encoded_response)
-    # print(data)
-    # print(output)
-    # print(data["data"][0]["states"])
-    # print("---------------------------------------")
-    # print(not(Park.objects.filter(name=park["fullName"]).exists()))
-    # print("----------------------------------------")
-
-
-=======
     url = 'https://developer.nps.gov/api/v1/parks?limit=100&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
     response = requests.get(url)
     data = response.json()
->>>>>>> submaster
     for park in data["data"]:
         try:
             phoneNum = park["contacts"]["phoneNumbers"][0]["phoneNumber"]

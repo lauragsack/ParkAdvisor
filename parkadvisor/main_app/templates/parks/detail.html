@@ -29,10 +29,9 @@
 				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i>
 
 				{% endif %}
-				<h5>{{park.avg_rating|floatformat:2}}</h5>
-				<p><strong>{{park.description}}</strong></p>
+				<p><strong><br>{{park.description}}</strong></p>
 				<p><strong><i class="fas fa-map-marker-alt" style="color:#ea4335"></i> {{park.location}}</strong></p>
-				<p><strong><a href="{{park.website}}">{{park.website}}</a></strong></p>
+				<p><strong><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> <a href="{{park.website}}">{{park.website}}</a></strong></p>
 				<p><strong><i class="fas fa-phone"></i> {{park.phone}}</strong></p>
 				<a href="{% url 'add_review' park.id %}"<button type="button" class="btn btn-primary float-right"  style="width:100%" >Add a review</button></a>
 			</div>
@@ -47,7 +46,11 @@
 				<h1>Reviews</h1>
 				{% for review in reviews %}
 					<div class="card bg-light mb-3" style="max-width: 100%">
-					  <div class="card-header">Category: {{review.get_category_display}} || Park Rating: {{review.park_rating}} || <i class="far fa-heart"></i> {{review.likes}}</div>
+					  <div class="card-header">
+					  	<span style="padding-right: 5px">Category: {{review.get_category_display}} </span><i class="fas fa-grip-lines-vertical"></i> 
+					  	<span style="padding: 10px">Park Rating: {{review.park_rating}}</span><i class="fas fa-grip-lines-vertical"></i> 
+					  	<span style="padding-left: 5px"><i class="far fa-heart"></i> {{review.likes}}</span>
+					  </div>
 					  <div class="card-body">
 					    <strong><p class="card-title">{{review.subject}}</p></strong>
 					    <p class="card-text">{{review.comments}}</p>
@@ -73,6 +76,7 @@
 	$(document).ready(function() {
 		$(".like").on("click", function(event) {
 			let review_id = event.target.getAttribute("data-review-id")
+			console.log(review_id)
 			$.ajax({
 			method: "GET",
 			url: `http://localhost:8000/reviews/like/${review_id}`,
