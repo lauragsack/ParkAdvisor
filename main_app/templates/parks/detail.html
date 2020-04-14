@@ -77,7 +77,7 @@
 			console.log(review_id)
 			$.ajax({
 			method: "GET",
-			url: `http://localhost:8000/reviews/like/${review_id}`,
+			url: `https://park-advisor.herokuapp.com/like/${review_id}`,
 			success: (success) => {
 				console.log('success')
 				console.log(review_id)
