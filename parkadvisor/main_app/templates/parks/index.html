@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Parks</h1>
+<h1 id="index-title">National Parks</h1>
 
 <div class='card-container col-md-12'>
 {% for park in parks %}
   <div class="card parkCard">
     <img class="card-img-top" src="{{park.image}}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title text-truncate">{{park.name}}</h5>
-      <p class="card-text text-truncate">{{park.description}}</p>
+      <h5 class="card-title">{{park.name}}</h5>
       <a href="/parks/{{park.id}}" class="btn btn-primary">View More Details</a>
     </div>
   </div>

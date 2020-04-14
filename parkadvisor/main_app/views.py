@@ -120,7 +120,7 @@ def signup(request):
 def external_api(request):
 
     #Working
-    url = 'https://developer.nps.gov/api/v1/parks?limit=100&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
+    url = 'https://developer.nps.gov/api/v1/parks?limit=50&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
     response = requests.get(url)
     data = response.json()
 
@@ -138,7 +138,7 @@ def external_api(request):
 
             formated_address = park["addresses"][0]["line1"] + ", " + park["addresses"][0]["city"] + ", " + park["addresses"][0]["stateCode"] +" " + park["addresses"][0]["postalCode"]
             if( (not(Park.objects.filter(name=park["fullName"]).exists())) and (park["designation"] == "National Park") ):
-                new_park = Park.objects.create(name=park["fullName"], location=formated_address,entrance_fee=int(float(park["entranceFees"][0]["cost"])), description=park["description"], phone=formatedPhoneNum, website=park["url"], open=True, image=park["images"][0]["url"], avg_rating=3.6)
+                new_park = Park.objects.create(name=park["fullName"], location=formated_address,entrance_fee=int(float(park["entranceFees"][0]["cost"])), description=park["description"], phone=formatedPhoneNum, website=park["url"], image=park["images"][0]["url"], avg_rating=3.6)
         except:
             continue
     #Sort of working
