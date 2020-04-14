@@ -1,6 +1,6 @@
 # ParkAdvisor
 
-## :evergreen_tree: PardAdvisor :evergreen_tree:
+## :evergreen_tree: ParKAdvisor :evergreen_tree:
 ![Yosemite](https://images.unsplash.com/photo-1517432995952-bbdb81650e9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)
 
 ### About This Web App
