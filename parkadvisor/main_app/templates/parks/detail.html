@@ -21,6 +21,8 @@
 				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star-half-alt" style="color:#FDCC0D"></i><i class="far fa-star"></i>
 				{% elif park.avg_rating == 4%}
 				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="far fa-star"></i>
+				{% elif park.avg_rating > 3.5 and park.avg_rating < 4%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star-half-alt" style="color:#FDCC0D"></i><i class="far fa-star"></i>
 				{% elif park.avg_rating <= 4.5 and park.avg_rating > 4%}
 				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star-half-alt" style="color:#FDCC0D"></i>
 				{% elif park.avg_rating == 5%}
@@ -45,9 +47,9 @@
 				<h1>Reviews</h1>
 				{% for review in reviews %}
 					<div class="card bg-light mb-3" style="max-width: 100%">
-					  <div class="card-header">Category: {{review.get_category_display}} || Park Rating: {{review.park_rating}} || Likes: {{review.likes}}</div>
+					  <div class="card-header">Category: {{review.get_category_display}} || Park Rating: {{review.park_rating}} || <span id="likes-{review.id}">Likes: {{review.likes}}</div>
 					  <div class="card-body">
-					    <h5 class="card-title">{{review.subject}}</h5>
+					    <strong><p class="card-title">{{review.subject}}</p></strong>
 					    <p class="card-text">{{review.comments}}</p>
 						{% if request.user == review.user %}
 					  	<a href="{% url 'reviews_update' review.id%}"><button type="button" class="btn btn-info float-right" style="margin:.5rem">Update Review</button></a>
@@ -74,6 +76,9 @@
 			url: `http://localhost:8000/reviews/like/${review_id}`,
 			success: (success) => {
 				console.log('success')
+				console.log(review_id)
+				// $(`#likes-${review_id}`).text("ABC")
+				location.reload();
 			},
 			error: (err) => {
 			console.log(err);
