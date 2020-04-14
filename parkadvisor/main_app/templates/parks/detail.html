@@ -56,8 +56,11 @@
 					    <a href="{% url 'reviews_delete' review.id%}"><button type="button" class="btn btn-danger float-right" style="margin:.5rem">Delete Review</button></a>
 						{% endif %}
 						</div>
-						<div class="card-footer card-text-right text-muted">Posted by {{ review.user }} on {{ review.created_date }}
-						<button type="button" class="like btn btn-danger float-right" data-review-id="{{review.id}}" style="margin:.5rem">Like</button>
+						<div class="card-footer text-muted">Posted by {{ review.user }} on {{ review.created_date }}
+							<button type="button" class="btn btn-danger float-right">
+								<span class="like glyphicon glyphicon-heart" aria-hidden="true" data-review-id="{{review.id}}"></span>
+							</button>
+						{% comment %} <button type="button" class="like btn btn-danger float-right" data-review-id="{{review.id}}" style="margin:.5rem">Like</button> {% endcomment %}
 						</div>
 					</div>
 				{% endfor %}
@@ -77,7 +80,6 @@
 			success: (success) => {
 				console.log('success')
 				console.log(review_id)
-				// $(`#likes-${review_id}`).text("ABC")
 				location.reload();
 			},
 			error: (err) => {
