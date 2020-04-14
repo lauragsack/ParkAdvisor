@@ -1,4 +1,3 @@
-# todo: delete this file if go with CBVs
 from django import forms
 from .models import Review
 
