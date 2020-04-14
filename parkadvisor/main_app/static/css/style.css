@@ -2,7 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #006400;
+    background-color: #5ba379;
   }
   
 main{
@@ -106,6 +106,14 @@ footer {
 .login-submit{
   display: block;
   margin: 0 auto;
+}
+
+#index-title{
+  color: white;
+}
+
+footer{
+  color: white;
 }
 
 

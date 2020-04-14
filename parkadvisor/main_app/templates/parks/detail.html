@@ -30,12 +30,6 @@
 				<h5>{{park.avg_rating|floatformat:2}}</h5>
 				<p><strong>{{park.description}}</strong></p>
 				<p><strong><i class="fas fa-map-marker-alt" style="color:#ea4335"></i> {{park.location}}</strong></p>
-				<h5>{{park.avg_rating}}</h5>
-				{% if park.open == True %}
-					<p><strong style="color:green">Open</strong></p>
-				{% else %}
-					<p><strong style="color:red">Closed</strong></p>
-				{% endif %}
 				<p><strong><a href="{{park.website}}">{{park.website}}</a></strong></p>
 				<p><strong><i class="fas fa-phone"></i> {{park.phone}}</strong></p>
 				<a href="{% url 'add_review' park.id %}"<button type="button" class="btn btn-primary float-right"  style="width:100%" >Add a review</button></a>

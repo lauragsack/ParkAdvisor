@@ -13,7 +13,6 @@ class Park(models.Model):
 	description = models.TextField(max_length=250)
 	phone = models.CharField(max_length=100)
 	website = models.CharField(max_length=200)
-	open = models.BooleanField()
 	image = models.CharField(max_length=250)
 	avg_rating = models.DecimalField(max_digits=2, decimal_places=1)
 

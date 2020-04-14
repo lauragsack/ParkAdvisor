@@ -18,7 +18,7 @@
 <body>
 <header class="navbar-fixed">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand mr-auto" href="#">Park<span style="color: #5ba379">Advisor</span></a>
+      <a class="navbar-brand mr-auto" href="{% url 'landing' %}">Park<span style="color: #5ba379">Advisor<i class="fas fa-tree"></i></span></a>
       <div class="nav justify-content-end">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
 
           <div class="navbar-nav">
             {% if user.is_authenticated %}
-              <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link active" href="{% url 'landing' %}">Home <span class="sr-only">(current)</span></a>
               <a class="nav-item nav-link" href="{% url 'index' %}">Explore Parks</a>
               <a class="nav-item nav-link" href="{% url 'about' %}">About Us</a>
 
