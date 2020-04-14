@@ -2,7 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #5ba379;
+    background-color: #006400;
   }
   
 main{
@@ -112,15 +112,8 @@ footer {
 
 
 .colorjumbo {
-    background-color: #c8e8e2;
+    background-color: #228B22;
     text-color: beige;
+    width:100%;
   }
 
-.carwidth {
-  width:100%;
-}  
-
-.carousel-item .img-fluid {
-width:100%;
-
-}
