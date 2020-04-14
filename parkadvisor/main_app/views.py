@@ -7,8 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
 #API RELATED
-import requests
-from django.http import HttpResponse
+import requests, json
 
 
 # Create your views here.
@@ -108,7 +107,7 @@ def signup(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def external_api(request):
-    url = 'https://developer.nps.gov/api/v1/parks?limit=100&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
+    url = 'https://developer.nps.gov/api/v1/parks?limit=50&api_key=65cD2Pey6zgKAXKmKA71wA6sHmuIcsAdiSs5xmhp'
     response = requests.get(url)
     data = response.json()
     for park in data["data"]:
@@ -121,6 +120,6 @@ def external_api(request):
                 new_park = Park.objects.create(name=park["fullName"], location=formated_address,entrance_fee=int(float(park["entranceFees"][0]["cost"])), description=park["description"], phone=formatedPhoneNum, website=park["url"], image=park["images"][0]["url"], avg_rating=3.6)
         except:
             continue
-    return render(request, 'parks/test.html', {'data': data})
+    return render(request, 'parks/external_api.html', {'data': data})
 
 
