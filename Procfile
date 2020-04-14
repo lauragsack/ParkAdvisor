@@ -1,1 +1,1 @@
-web: gunicorn ./parkadvisor/park-advisor.wsgi
+web: gunicorn park-advisor.wsgi
