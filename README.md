@@ -1,7 +1,7 @@
 # ParkAdvisor
 
-## :evergreen_tree: ParKAdvisor :evergreen_tree:
-![Yosemite](https://images.unsplash.com/photo-1517432995952-bbdb81650e9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)
+## :evergreen_tree: ParkAdvisor :evergreen_tree:
+![Yosemite](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRebMjMHDksQyxxfX9yuc-Pa8yp52pKPX8lZaef57ZR7t1HmLzM&usqp=CAU)
 
 ### About This App
 https://github.com/lauragsack/ParkAdvisor
