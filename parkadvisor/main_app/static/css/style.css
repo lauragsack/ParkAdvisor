@@ -1,14 +1,139 @@
 body {
     display: flex;
+    font-family: 'Source Sans Pro', sans-serif;
     min-height: 100vh;
     flex-direction: column;
+    background-image: url('https://images.unsplash.com/photo-1494358722603-becf33a822a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60');
+    background-size: cover;
   }
   
-  main {
-    flex: 1 0 auto;
+main{
+  flex: 1 0 auto;
+}
+
+.card-container{
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+
+}
+.detail-container{
+  flex: 1 0 auto;
+}
+.parkCard{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  word-wrap:break-word;
+  height: 35rem;
+  width: 25rem;
+  margin: 1rem;
+  margin-right: 10px;
+}
+
+.card-img-top{
+  height: 80%;
+}
+
+footer {
+  padding-top: 0;
+  text-align: right;
+}
+
+.description-container{
+  background-color: #ffffff ;
+  padding: .5rem;
+}
+
+.reviews-container{
+  padding: 3rem;
+}
+
+.image-container{
+  background-color: #ffffff ;
+    display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.detail-image{
+  height: auto;
+}
+
+.description-image-container{
+  padding-top: 3rem;
+  height: auto;
+}
+
+.review-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.review-submit{
+  display: block;
+  margin: 0 auto;
+}
+
+.signup-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.signup-submit{
+  display: block;
+  margin: 0 auto;
+}
+
+
+.login-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.login-submit{
+  display: block;
+  margin: 0 auto;
+}
+
+footer{
+  color: white;
+}
+
+h1,h2,h3,h4,h5{
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-weight: bold;
+}
+
+.colorjumbo {
+    background-color: rgba(255, 255, 255, 0);
+    text-color: beige;
+    width:100%;
   }
-  
-  footer {
-    padding-top: 0;
-    text-align: right;
-  }
+
+.media{
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.media-body{
+  font-size: 18px;
+}
+
+.review-cards{
+  margin-top: 20px;
+}
+
+.mt-0 {
+  font-size: 28px;
+  font-weight: bolder;
+}

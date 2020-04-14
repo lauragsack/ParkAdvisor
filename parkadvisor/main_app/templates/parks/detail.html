@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<div class="col-md-12 detail-container">
+		<div class="row description-image-container">
+			<div class="col-md-4 description-container">
+				<h2>{{park.name}}</h2>
+				{% if park.avg_rating == 0 %}
+				<i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+				{% elif park.avg_rating == 1%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+				{% elif park.avg_rating <= 1.5 and park.avg_rating > 1%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star-half-alt" style="color:#FDCC0D"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+				{% elif park.avg_rating == 2%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+				{% elif park.avg_rating <= 2.5 and park.avg_rating > 2%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star-half-alt" style="color:#FDCC0D"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+				{% elif park.avg_rating == 3%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+				{% elif park.avg_rating <= 3.5 and park.avg_rating > 3%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star-half-alt" style="color:#FDCC0D"></i><i class="far fa-star"></i>
+				{% elif park.avg_rating == 4%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="far fa-star"></i>
+				{% elif park.avg_rating > 3.5 and park.avg_rating < 4%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star-half-alt" style="color:#FDCC0D"></i><i class="far fa-star"></i>
+				{% elif park.avg_rating <= 4.5 and park.avg_rating > 4%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star-half-alt" style="color:#FDCC0D"></i>
+				{% elif park.avg_rating == 5%}
+				<i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i><i class="fas fa-star" style="color:#FDCC0D"></i>
+
+				{% endif %}
+				<p><strong><br>{{park.description}}</strong></p>
+				<p><strong><i class="fas fa-map-marker-alt" style="color:#ea4335"></i> {{park.location}}</strong></p>
+				<p><strong><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> <a href="{{park.website}}">{{park.website}}</a></strong></p>
+				<p><strong><i class="fas fa-phone"></i> {{park.phone}}</strong></p>
+				<a href="{% url 'add_review' park.id %}"<button type="button" class="btn btn-primary float-right"  style="width:100%" >Add a review</button></a>
+			</div>
+
+			<div class="col-md-8 image-container">
+				<img class="img-fluid detail-image" src="{{park.image}}">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 reviews-container">
+				<h1>Reviews</h1>
+				{% for review in reviews %}
+					<div class="card bg-light mb-3" style="max-width: 100%">
+					  <div class="card-header">
+					  	<span style="padding-right: 5px">Category: {{review.get_category_display}} </span><i class="fas fa-grip-lines-vertical"></i> 
+					  	<span style="padding: 10px">Park Rating: {{review.park_rating}}</span><i class="fas fa-grip-lines-vertical"></i> 
+					  	<span style="padding-left: 5px"><i class="far fa-heart"></i> {{review.likes}}</span>
+					  </div>
+					  <div class="card-body">
+					    <strong><p class="card-title">{{review.subject}}</p></strong>
+					    <p class="card-text">{{review.comments}}</p>
+						{% if request.user == review.user %}
+					  	<a href="{% url 'reviews_update' review.id%}"><button type="button" class="btn btn-info float-right" style="margin:.5rem">Update Review</button></a>
+					    <a href="{% url 'reviews_delete' review.id%}"><button type="button" class="btn btn-danger float-right" style="margin:.5rem">Delete Review</button></a>
+						{% endif %}
+						</div>
+						<div class="card-footer text-muted">Posted by {{ review.user }} on {{ review.created_date }}
+							<button type="button" class="btn btn-danger float-right">
+								<span class="like glyphicon glyphicon-heart" aria-hidden="true" data-review-id="{{review.id}}"></span>
+							</button>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>	
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".like").on("click", function(event) {
+			let review_id = event.target.getAttribute("data-review-id")
+			console.log(review_id)
+			$.ajax({
+			method: "GET",
+			url: `http://localhost:8000/reviews/like/${review_id}`,
+			success: (success) => {
+				console.log('success')
+				console.log(review_id)
+				location.reload();
+			},
+			error: (err) => {
+			console.log(err);
+			}
+			})
+		})
+	});
+</script>
+
+{% endblock %}

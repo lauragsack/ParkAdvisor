@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="review-container col-md-12">
+    {% if object %}
+      <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+    {% else %}
+      <h1>Post a Review</h1>
+    {% endif %}
+    <form action="" method="POST">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <input type="submit" value="Submit!" class="review-submit btn btn-primary">
+    </form>
+  </div>
+{% endblock %}
