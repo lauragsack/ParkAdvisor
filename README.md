@@ -4,12 +4,12 @@
 ![Yosemite](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRebMjMHDksQyxxfX9yuc-Pa8yp52pKPX8lZaef57ZR7t1HmLzM&usqp=CAU)
 
 ### About This App
-ParkAdviser is an app made for users to explore US National Parks. Users can add reviews to share and rate their park experiences. 
+ParkAdviser is an app made for users to explore US National Parks. Users can post reviews to share and rate their park experiences. 
 
-#### Checkit it out
-Start exploring parks [here!](https://park-advisor.herokuapp.com/)
-username: greatoutdoors
-password: iloventlparks!
+#### Check Out ParkAdvisor
+Start exploring parks [here!](https://park-advisor.herokuapp.com/)  
+username: greatoutdoors   
+password: iloventlparks!  
 
 ### User Stories
 
